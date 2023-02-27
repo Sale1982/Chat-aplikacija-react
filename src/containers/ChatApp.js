@@ -4,13 +4,15 @@ import _ from "lodash";
 import { v4 as uuidv4 } from "uuid";
 import LoginForm from "../components/LoginForm";
 import ChatRoom from "./ChatRoom";
+import Input from "./Input";
 
 const ChatApp = () => {
   const [loggedUser, setLoggedUser] = useState({
-    username: "",
+    username: "Saša",
     color: "#000000",
+    id: "1",
   });
-  const [isLogged, setIsLogged] = useState(false);
+  const [isLogged, setIsLogged] = useState(true);
 
   const handleUserInput = (event) => {
     const name = event.target.name;
@@ -45,6 +47,7 @@ const ChatApp = () => {
         />
       )}
       {isLogged && <ChatRoom loggedUser={loggedUser} />}
+      {isLogged && <Input loggedUser={loggedUser} />}
     </div>
   );
 };
