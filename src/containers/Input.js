@@ -23,8 +23,6 @@ const Input = ({ loggedUser }) => {
         timestamp: { ...getHourMin() },
         loggedUser,
       }));
-      //onSendMessage(message);
-      console.log("Prije reseta", message);
     } else {
       alert("Moraš upisati poruku");
     }

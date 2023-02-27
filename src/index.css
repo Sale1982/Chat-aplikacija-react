@@ -132,7 +132,7 @@ label[for="color"] {
   padding: 0.75rem;
   display: flex;
   flex-wrap: wrap;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .MessageList {
@@ -185,6 +185,7 @@ label[for="color"] {
   display: flex;
   align-items: center;
   gap: 3rem;
+  margin-bottom: 0.5rem;
 }
 
 .InputMessage {
