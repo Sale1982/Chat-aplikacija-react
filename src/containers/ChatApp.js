@@ -47,7 +47,6 @@ const ChatApp = () => {
         />
       )}
       {isLogged && <ChatRoom loggedUser={loggedUser} />}
-      {isLogged && <Input loggedUser={loggedUser} />}
     </div>
   );
 };
