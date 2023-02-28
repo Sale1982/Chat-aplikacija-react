@@ -7,15 +7,15 @@ const MessageList = ({ messages, loggedUser }) => {
         {messages.map((message) => {
           const keyId = uuidv4();
           return (
-            <li className="Message-content" key={keyId}>
-              <div className="Message-header">
+            <li className="Message-content-me" key={keyId}>
+              <div className="Message-header-me">
                 <div
                   className="Avatar"
                   style={{ backgroundColor: message.loggedUser.color }}
                 ></div>
                 <div className="Username">{message.loggedUser.username}</div>
               </div>
-              <div className="Message">{message.text}</div>
+              <div className="Message-me">{message.text}</div>
               <div className="Timestamp">
                 <span>{message.timestamp.hour}</span>:
                 <span>{message.timestamp.min}</span>

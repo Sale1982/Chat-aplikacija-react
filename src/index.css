@@ -143,6 +143,7 @@ label[for="color"] {
 }
 
 .MessageList {
+  /*ul element*/
   list-style: none;
   width: 100%;
   display: flex;
@@ -150,13 +151,30 @@ label[for="color"] {
 }
 
 .Message-content {
+  /*li*/
   width: 35%;
   margin-bottom: 0.5rem;
+}
+
+.Message-content-me {
+  /*li*/
+  width: 35%;
+  margin-bottom: 0.5rem;
+  margin-right: 0.5rem;
+  align-self: flex-end;
 }
 
 .Message-header {
   display: flex;
   align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.Message-header-me {
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
   gap: 0.5rem;
   margin-bottom: 0.5rem;
 }
@@ -174,6 +192,13 @@ label[for="color"] {
 
 .Message {
   background-color: #e3618e97;
+  padding: 0.5rem;
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
+}
+
+.Message-me {
+  background-color: #977ae289;
   padding: 0.5rem;
   border-radius: 10px;
   margin-bottom: 0.5rem;
