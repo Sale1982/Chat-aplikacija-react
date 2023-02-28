@@ -7,11 +7,11 @@ import ChatRoom from "./ChatRoom";
 
 const ChatApp = () => {
   const [loggedUser, setLoggedUser] = useState({
-    username: "Saša",
+    username: "",
     color: "#000000",
-    id: "1",
+    id: "",
   });
-  const [isLogged, setIsLogged] = useState(true);
+  const [isLogged, setIsLogged] = useState(false);
 
   const handleUserInput = (event) => {
     const name = event.target.name;

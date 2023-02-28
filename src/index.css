@@ -56,9 +56,10 @@
 /*LoginForm component*/
 .LoginForm {
   width: 50%;
+  margin: 50% 25%;
   border: 5px solid #ee8db4;
   border-radius: 10px;
-  margin: auto 0; /*centriranje login forme na sredinu ekrana*/
+
   padding: 10px;
 }
 
