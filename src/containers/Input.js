@@ -24,6 +24,7 @@ const Input = ({ loggedUser, handleMessage }) => {
         loggedUser,
       }));
       handleMessage(message);
+
       resetMessage();
     } else {
       alert("Moraš upisati poruku");

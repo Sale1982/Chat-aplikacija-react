@@ -1,6 +1,7 @@
 import { v4 as uuidv4 } from "uuid";
 
 const MessageList = ({ messages, loggedUser }) => {
+  //console.log("U komponenti message list ", messages);
   return (
     <div className="MessageList-container">
       <ul className="MessageList">
@@ -11,9 +12,9 @@ const MessageList = ({ messages, loggedUser }) => {
               <div className="Message-header-me">
                 <div
                   className="Avatar"
-                  style={{ backgroundColor: message.loggedUser.color }}
+                  style={{ backgroundColor: loggedUser.color }}
                 ></div>
-                <div className="Username">{message.loggedUser.username}</div>
+                <div className="Username">{loggedUser.username}</div>
               </div>
               <div className="Message-me">{message.text}</div>
               <div className="Timestamp">
