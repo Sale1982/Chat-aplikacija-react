@@ -4,7 +4,6 @@ import _ from "lodash";
 import { v4 as uuidv4 } from "uuid";
 import LoginForm from "../components/LoginForm";
 import ChatRoom from "./ChatRoom";
-import Input from "./Input";
 
 const ChatApp = () => {
   const [loggedUser, setLoggedUser] = useState({

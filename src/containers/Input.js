@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { getHourMin } from "../services/getHourMin";
 
-const Input = ({ loggedUser }) => {
+const Input = ({ loggedUser, handleMessage }) => {
   const [message, setMessage] = useState({
     text: "",
     timestamp: { ...getHourMin() },
@@ -23,9 +23,20 @@ const Input = ({ loggedUser }) => {
         timestamp: { ...getHourMin() },
         loggedUser,
       }));
+      handleMessage(message);
+      resetMessage();
     } else {
       alert("Moraš upisati poruku");
     }
+  };
+
+  const resetMessage = () => {
+    setMessage((message) => ({
+      ...message,
+      text: "",
+      timestamp: { ...getHourMin() },
+      loggedUser,
+    }));
   };
 
   return (

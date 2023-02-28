@@ -207,3 +207,25 @@ label[for="color"] {
   width: 15%;
   font-size: 1rem;
 }
+
+/*Scrollbar style*/
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 50px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #8264da;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #ee8db4;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #fa5899;
+}

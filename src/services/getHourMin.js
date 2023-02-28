@@ -4,7 +4,7 @@ function getHourMin() {
 
   return {
     hour: hour < 10 ? "0" + hour : hour,
-    min: hour < 10 ? "0" + min : min,
+    min: min < 10 ? "0" + min : min,
   };
 }
 
