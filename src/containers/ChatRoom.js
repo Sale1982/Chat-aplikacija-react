@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useReducer } from "react";
 
 import MessageList from "../components/MessageList";
 import Input from "./Input";
 
 const ChatRoom = ({ loggedUser }) => {
   const [drone, setDrone] = useState(null);
-  const [room, setRoom] = useState("");
+  const [room, setRoom] = useState(null);
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
@@ -21,13 +21,18 @@ const ChatRoom = ({ loggedUser }) => {
     });
     const room = drone.subscribe("observable-room");
     setRoom(room);
-    room.on("data", (data) => {
-      messages.push(data);
-      setMessages([...messages]);
-    });
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    if (room) {
+      room.on("data", (data) => {
+        //messages.push(data);
+        setMessages((messages) => [...messages, data]);
+      });
+    }
+  }, [room]);
 
   const handleMessage = (message) => {
     drone.publish({
