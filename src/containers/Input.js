@@ -2,11 +2,7 @@ import { useState } from "react";
 import { getHourMin } from "../services/getHourMin";
 
 const Input = ({ loggedUser, handleMessage }) => {
-  const [message, setMessage] = useState({
-    text: "",
-    timestamp: { ...getHourMin() },
-    member: loggedUser,
-  });
+  const [message, setMessage] = useState({ text: "" });
 
   const sendMessageOnEnter = (event) => {
     if (event.key === "Enter") sendMessage();
@@ -18,13 +14,8 @@ const Input = ({ loggedUser, handleMessage }) => {
 
   const sendMessage = (event) => {
     if (message.text) {
-      setMessage((message) => ({
-        ...message,
-        timestamp: { ...getHourMin() },
-        loggedUser,
-      }));
+      setMessage(message);
       handleMessage(message);
-
       resetMessage();
     } else {
       alert("Moraš upisati poruku");
@@ -32,12 +23,7 @@ const Input = ({ loggedUser, handleMessage }) => {
   };
 
   const resetMessage = () => {
-    setMessage((message) => ({
-      ...message,
-      text: "",
-      timestamp: { ...getHourMin() },
-      member: loggedUser,
-    }));
+    setMessage({ text: "" });
   };
 
   return (

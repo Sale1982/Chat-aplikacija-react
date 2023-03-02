@@ -1,11 +1,8 @@
 import { v4 as uuidv4 } from "uuid";
 
 const MessageList = ({ messages, loggedUser }) => {
-  console.log(messages);
   const displayMessage = (message) => {
     const { member, text } = message;
-    console.log(member.id);
-    console.log(loggedUser.id);
     const myMessage = member.id === loggedUser.id;
     const className = myMessage ? "-me" : "";
     return (

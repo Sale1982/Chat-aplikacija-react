@@ -1,7 +1,7 @@
 import logo from "../img/logo.png";
 import { useState } from "react";
 import _ from "lodash";
-import { v4 as uuidv4 } from "uuid";
+
 import LoginForm from "../components/LoginForm";
 import ChatRoom from "./ChatRoom";
 
