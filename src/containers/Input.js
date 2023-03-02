@@ -5,7 +5,7 @@ const Input = ({ loggedUser, handleMessage }) => {
   const [message, setMessage] = useState({
     text: "",
     timestamp: { ...getHourMin() },
-    loggedUser,
+    member: loggedUser,
   });
 
   const sendMessageOnEnter = (event) => {
@@ -36,7 +36,7 @@ const Input = ({ loggedUser, handleMessage }) => {
       ...message,
       text: "",
       timestamp: { ...getHourMin() },
-      loggedUser,
+      member: loggedUser,
     }));
   };
 

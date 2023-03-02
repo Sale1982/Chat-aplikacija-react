@@ -1,4 +1,4 @@
-import { useState, useEffect, useReducer } from "react";
+import { useState, useEffect } from "react";
 
 import MessageList from "../components/MessageList";
 import Input from "./Input";
@@ -26,13 +26,14 @@ const ChatRoom = ({ loggedUser }) => {
   }, []);
 
   useEffect(() => {
-    if (room) {
-      room.on("data", (data) => {
-        //messages.push(data);
-        setMessages((messages) => [...messages, data]);
+    if (drone && room) {
+      room.on("message", (message) => {
+        console.log(message);
+        setMessages((messages) => [...messages, message]);
       });
     }
-  }, [room]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [drone, room]);
 
   const handleMessage = (message) => {
     drone.publish({

@@ -1,28 +1,37 @@
 import { v4 as uuidv4 } from "uuid";
 
 const MessageList = ({ messages, loggedUser }) => {
-  //console.log("U komponenti message list ", messages);
+  console.log(messages);
+  const displayMessage = (message) => {
+    const { member, text } = message;
+    console.log(member.id);
+    console.log(loggedUser.id);
+    const myMessage = member.id === loggedUser.id;
+    const className = myMessage ? "-me" : "";
+    return (
+      <li className={`Message-content${className}`} key={uuidv4()}>
+        <div className={`Message-header${className}`}>
+          <div
+            className="Avatar"
+            style={{ backgroundColor: loggedUser.color }}
+          ></div>
+          <div className="Username">{loggedUser.username}</div>
+        </div>
+        <div className={`Message${className}`}>{text}</div>
+        <div className="Timestamp">
+          <span>{message.timestamp.hour}</span>:
+          <span>{message.timestamp.min}</span>
+        </div>
+      </li>
+    );
+  };
+
+  //const classStyle = myMessage ? "me" : "";
   return (
     <div className="MessageList-container">
       <ul className="MessageList">
         {messages.map((message) => {
-          const keyId = uuidv4();
-          return (
-            <li className="Message-content-me" key={keyId}>
-              <div className="Message-header-me">
-                <div
-                  className="Avatar"
-                  style={{ backgroundColor: loggedUser.color }}
-                ></div>
-                <div className="Username">{loggedUser.username}</div>
-              </div>
-              <div className="Message-me">{message.text}</div>
-              <div className="Timestamp">
-                <span>{message.timestamp.hour}</span>:
-                <span>{message.timestamp.min}</span>
-              </div>
-            </li>
-          );
+          return displayMessage(message);
         })}
       </ul>
     </div>

@@ -9,7 +9,6 @@ const ChatApp = () => {
   const [loggedUser, setLoggedUser] = useState({
     username: "",
     color: "#000000",
-    id: "",
   });
   const [isLogged, setIsLogged] = useState(false);
 
@@ -25,7 +24,6 @@ const ChatApp = () => {
       setIsLogged(true);
       setLoggedUser((loggedUser) => ({
         ...loggedUser,
-        id: uuidv4(),
         username: _.capitalize(loggedUser.username),
       }));
     } else {
