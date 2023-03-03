@@ -1,29 +1,28 @@
-import { v4 as uuidv4 } from "uuid";
+import { getHourMin } from "../services/getHourMin";
 
-const MessageList = ({ messages, loggedUser }) => {
+const MessageList = ({ messages, currentMember }) => {
   const displayMessage = (message) => {
-    const { member, text } = message;
-    const myMessage = member.id === loggedUser.id;
+    const { data, member } = message;
+    const myMessage = member.id === currentMember.id;
+    const timestamp = getHourMin(message.timestamp);
     const className = myMessage ? "-me" : "";
     return (
-      <li className={`Message-content${className}`} key={uuidv4()}>
+      <li className={`Message-content${className}`} key={message.id}>
         <div className={`Message-header${className}`}>
           <div
             className="Avatar"
-            style={{ backgroundColor: loggedUser.color }}
+            style={{ backgroundColor: member.clientData.color }}
           ></div>
-          <div className="Username">{loggedUser.username}</div>
+          <div className="Username">{member.clientData.username}</div>
         </div>
-        <div className={`Message${className}`}>{text}</div>
+        <div className={`Message${className}`}>{data.text}</div>
         <div className="Timestamp">
-          <span>{message.timestamp.hour}</span>:
-          <span>{message.timestamp.min}</span>
+          <span>{timestamp.hour}</span>:<span>{timestamp.min}</span>
         </div>
       </li>
     );
   };
 
-  //const classStyle = myMessage ? "me" : "";
   return (
     <div className="MessageList-container">
       <ul className="MessageList">

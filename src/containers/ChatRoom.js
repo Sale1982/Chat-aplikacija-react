@@ -1,16 +1,16 @@
 import { useState, useEffect } from "react";
-
 import MessageList from "../components/MessageList";
 import Input from "./Input";
 
 const ChatRoom = ({ loggedUser }) => {
+  const [currentMember, setCurrentMember] = useState(loggedUser);
   const [drone, setDrone] = useState(null);
   const [room, setRoom] = useState(null);
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
     const drone = new window.Scaledrone("z9fNLDZifzXjXy75", {
-      secretKey: "THrzeHBYNfEKghudmduBjeKHOJkX8oUt",
+      data: loggedUser,
     });
     setDrone(drone);
 
@@ -18,17 +18,19 @@ const ChatRoom = ({ loggedUser }) => {
       if (error) {
         return console.error(error);
       }
+      setCurrentMember((currentMember) => ({
+        ...currentMember,
+        id: drone.clientId,
+      }));
     });
     const room = drone.subscribe("observable-room");
     setRoom(room);
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     if (drone && room) {
       room.on("message", (message) => {
-        console.log(message);
         setMessages((messages) => [...messages, message]);
       });
     }
@@ -44,8 +46,8 @@ const ChatRoom = ({ loggedUser }) => {
 
   return (
     <div className="ChatRoom">
-      <MessageList messages={messages} loggedUser={loggedUser} />
-      <Input handleMessage={handleMessage} loggedUser={loggedUser} />
+      <MessageList messages={messages} currentMember={currentMember} />
+      <Input handleMessage={handleMessage} />
     </div>
   );
 };

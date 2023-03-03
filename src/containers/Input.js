@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { getHourMin } from "../services/getHourMin";
 
-const Input = ({ loggedUser, handleMessage }) => {
+const Input = ({ handleMessage }) => {
   const [message, setMessage] = useState({ text: "" });
 
   const sendMessageOnEnter = (event) => {
